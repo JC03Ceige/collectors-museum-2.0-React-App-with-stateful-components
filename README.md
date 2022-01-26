@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Dependencies
+
+Reactstrap: This project uses components from react-bootstrap. To use this we need to run 'npm install reactstrap react react-dom'.
+You can find the docs here: [https://reactstrap.github.io/?path=/story/home-installation--page]
+
+Reacticons: This project imports the desired icon(s) from the extensive react-icons library. To use react-icons we need to run 'npm install react-icons --save'. You can find the docs here [https://react-icons.github.io/react-icons/]

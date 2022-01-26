@@ -1,38 +1,524 @@
+/* Use a wildcard selector to give all the margins and padding on the page a value of zero. */
+*{
+  padding: 0;
+  margin: 0;
+}
+
+/* Use the App selector to apply general styling to the App UI. */
 .App {
+  background-color: rgb(16, 39, 46);
   text-align: center;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* Style the App header by giving it a Google-Font font which is imported in the App component.
+We also give it a background image from the assets folder. */
 .App-header {
+  font-family: 'Kanit' !important;
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-image: url(./assets/collectorsmuseum.jpg);
+  background-repeat: no-repeat;  
+  min-height: 45vh;
+  min-width: 100vw;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* The header h1 title is styled uniquely to give it a neon glow effect. 
+In order to make look as thought the title is in front of the rest of the siblings,
+we give it a z-index of 2 which also lets it glow fall on the other elements. 
+z-index must be used with position. */
+.App-header h1 {
+  position: relative;
+  font-size: calc(50px + 1vmin);
+  text-decoration: overline underline !important;
+  font-weight: 800;
+  letter-spacing: 1.6vw;
+  margin-top: 2em;
+  color: white;
+  z-index: 2 !important;
+  text-shadow:
+      0.1px 0.1px 1px rgb(226, 0, 136),
+      -0.1px -0.1px 1px rgb(233, 0, 140),
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #f09,
+      0 0 82px #f09,
+      0 0 92px #f09,
+      0 0 102px #f09,
+      0 0 151px #f09;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+/* The rest of the heading titles are styled in the same manner but with less extravegance. */
+.App-header h2, h3{
+  font-weight: 300;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff;
+}
+
+/* The logo svg is given a neon glow using the filter: drop-shadow. 
+The z-index is set to 0 to let it appear behind the tilte. z-index must be used with position. */
+.App-header img#svg {
+  min-width: calc(60px + 1vmin) !important;
+  color: rgb(223, 162, 10) !important;
+  fill: white;
+  stroke: white !important;
+  position: relative;
+  z-index: 0 !;
+  filter: drop-shadow(0.1px 0.1px 1px rgb(255, 0, 153))
+      drop-shadow(.1px -0.1px 1px rgb(223, 162, 10))
+      drop-shadow(0 0 7px #fff)
+      drop-shadow(0 0 13px #fff)
+      drop-shadow(0 0 27px #fff)
+      drop-shadow(0 0 43px rgba(255, 0, 153, 0.692))
+      drop-shadow(0 0 81px rgba(255, 0, 153, 0.637))
+      drop-shadow(0 0 94px rgba(223, 162, 10, 0.562))
+      drop-shadow(0 0 102px rgba(255, 84, 187, 0.432))
+      drop-shadow(0 0 115px rgba(255, 191, 9, 0.445));
+      border: none;
+      background: transparent !important;
+      border-radius: 30%;
+      margin: 0em 1em 1em auto;
+}
+
+/* Position the menu button 
+.menuBtn {
+  position: absolute !important;
+  top: 1em;
+  left: 1em;
+}*/
+
+/* The form is styled to make is stand out in the header.*/
+Form .text-muted {
+  color: #fff !important;
+  opacity: 1 !important;
+  letter-spacing: 2px;
+}
+
+aside .side-menu {
+  display: flex;
+  position:fixed;
+  left: 1em;  
+  width: 20vw;
+  background-color: rgba(252, 248, 192, 0.812) !important;
+  padding: 0.5em !important;
+  justify-content: start;
+  text-align: left;
+  border-radius: 7px;
+  box-shadow: 1px 1px 10px black;
+  position: fixed;
+	z-index: 3;
+}
+
+nav ul {
+  display: grid;
+}
+
+nav li {
+  margin: 1em 1em;
+  list-style: none;
+  font-family: 'Kanit';
+  font-weight: bold;
+  letter-spacing: 0.25em;
+  line-height: 2em;
+  color: white;
+  text-shadow:
+      0.1px 0.1px 1px rgba(190, 0, 114, 0.795),
+      -0.1px -0.1px 1px rgb(150, 15, 96),
+      0 0 7px rgba(255, 0, 119, 0.795),
+      0 0 10px rgba(255, 0, 119, 0.795),
+      0 0 21px #f06,
+      0 0 42px #f09,
+      0 0 82px #f09,
+      0 0 92px #f09,
+      0 0 102px #f09,
+      0 0 151px #f09;
+}
+
+/*This provides styling for the log in form*/
+.logInForm {
+  color: #fff !important;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff;
+  width: 90vw;
+  background-color: rgba(32, 56, 59, 0.812) !important;
+  padding: 1em;
+  display: inline-flex;
+  justify-content: space-around;
+  margin: 1em auto;
+  border-radius: 7px;
+  box-shadow: 1px 1px 10px black;
+  position: fixed;
+	z-index: 3;
+}
+
+/* This styles the form containing div to update the user profile*/
+.profileDetails {
+  display: flex;
+  position: fixed;
+  color: #fff !important;
+  background-color: rgba(32, 56, 59, 0.9) !important;
+  padding: 1em;
+  margin: -2em auto;
+  border-radius: 7px;
+  box-shadow: 1px 1px 10px black;
+}
+
+/* This styles the form to update the user profile*/
+#formProfile {
+  min-width: 100%;
+  z-index: 2;
+  display: flex;
+  padding: 1em;
+}
+
+/* This applies styling to the input fields in the user profile form*/
+.user-info {
+  background-color: rgba(218, 218, 218, 0.658) !important;
+  width: 20vw !important;
+  color: white !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px;
+}
+
+/*We use this selector to style what the form input should look like*/
+.user-info:focus {
+  border: none !important;
+  outline: solid 0.25em rgba(255, 241, 49, 0.568) !important;
+  background-color: white !important;
+  color: #282c34  !important;
+}
+
+/*Stying for the close button*/
+.closeBtn {
+  color: rgb(255, 115, 0);
+  cursor: pointer;
+  position: inherit;
+  z-index: 3;
+  filter: drop-shadow( 0.2px 0.2px 0.5px rgb(255, 252, 100))
+          drop-shadow( 0.5px 0.5px 0.95px rgb(109, 89, 0))
+          drop-shadow( 0.85px 0.85px 3px rgb(255, 252, 255))
+          drop-shadow( 0 0 7px rgba(255, 200, 18, 0.863))
+          drop-shadow( 0 0 42px rgb(255, 233, 105));
+}
+
+/* Styling for the user profile button to differentiate it slightly from the rest.
+This helps to indicate that the button has a slightly different function to the rest. */
+.userProfileBtn {
+  position: absolute;
+  border-radius: 50% !important;
+  border: solid 0.5em white !important;
+  background-color: white!important;
+  box-shadow: 0.1px 0.1px 1px rgb(255, 117, 244),
+              -0.1px -0.1px 1px rgb(226, 128, 187),
+              0 0 7px rgba(255, 0, 119, 0.795),
+              0 0 10px rgba(255, 0, 119, 0.795),
+              0 0 21px #f08,
+              0 0 42px #f08,
+              0 0 82px #f09,
+              0 0 92px #f09,
+              0 0 102px #f09,
+              0 0 111px #f08;
+  z-index: 3 !important;
+}
+
+.profile {
+  position: sticky;
+  left: 1em !important;
+  margin: 1px;
+}
+
+.profileLogin {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+}
+
+/*Specicif tyiling for the log in button*/
+.logIn {
+  display: flex;
+  position: fixed;
+  top: 1em;
+  right: 2em;
+  padding: 1em;
+  justify-items: flex-end;
+  justify-self: flex-end;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+/*Specific styling for the menu button*/
+.menuBtn {
+  display: flex;
+  position: fixed;
+  top: 1em;
+  left: 2em;
+  padding: 1em;
+  justify-items: flex-start;
+  justify-self: flex-start;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+/*Generic style for all buttons in the header to have a uniform look.*/
+.headerBtn {
+  border: fuchsia !important;
+  color: deeppink !important;
+  box-shadow: 0.1px 0.1px 1px rgb(226, 0, 136),
+              -0.1px -0.1px 1px rgb(233, 0, 140),
+              0 0 7px #fff,
+              0 0 10px #fff,
+              0 0 21px #f06,
+              0 0 42px #f09,
+              0 0 82px #f09,
+              0 0 92px #f09,
+              0 0 102px #f09,
+              0 0 151px #f09;
+}
+
+.submit {
+  display: flex;
+  padding: 1em;
+}
+
+/* The input element is given a set height and width and centered on the UI with margins. */
+input {
+  display: flex;
+  height: 2em;
+  width: 15vw !important;
+  margin: 1em 0em !important;
+  padding-left: 1em !important;
+}
+
+/* Remove the margin and padding from the App body. */
+.App-body {  
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* All edges of the container are eliminated by giving margins and padding of 0. */
+.container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* The display tile is styled with specific background color, margins, padding and sizes. */
+div#displayTile {
+  padding: 3rem 4rem 4rem 4rem;
+  background-color: rgb(16, 39, 46);
+  margin: 0 !important;
+  width: 100vw;
+}
+
+/* The image in the display tile is styled to make it stand out. */
+#displayTile img {
+  margin: 2em;
+  border-radius: 7px;
+  opacity: 0.85;
+  box-shadow: 2px 2.8px 2.2px rgba(0, 0, 0, 0.234),
+  -2px -2.8px 2.2px rgba(0, 0, 0, 0.234),
+  4px 4.8px 4.2px rgba(0, 0, 0, 0.134),
+  -4px -4.8px 4.2px rgba(0, 0, 0, 0.134),
+  6px 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  12px 12.5px 10px rgba(0, 0, 0, 0.06),
+  -12px -12.5px 10px rgba(0, 0, 0, 0.06),
+  22px 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  41px 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  -41px -41.8px 33.4px rgba(0, 0, 0, 0.086),
+  100px 100px 80px rgba(0, 0, 0, 0.12); 
+}
+
+/* Paragraphs are given generic styling for the entire UI with this p selector. */
+p {
+  font-size: 1.4em;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.753),
+               2.5px 2.8px 2.9px rgba(0, 0, 0, 0.438);
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.288);
+  border-radius: 7px; 
+  padding: 3em 8em 3em 8em;
+  box-shadow: 2px 2.8px 2.2px rgba(58, 35, 5, 0.123),
+  -2px -2.8px 2.2px rgba(58, 35, 5, 0.034),
+  4px 4.8px 4.2px rgba(58, 35, 5, 0.034),
+  -4px -4.8px 4.2px rgba(58, 35, 5, 0.034),
+  6px 6.7px 5.3px rgba(58, 35, 5, 0.048),
+  12px 12.5px 10px rgba(58, 35, 5, 0.06),
+  -12px -12.5px 10px rgba(58, 35, 5, 0.06),
+  22px 22.3px 17.9px rgba(58, 35, 5, 0.072),
+  41px 41.8px 33.4px rgba(58, 35, 5, 0.086),
+  -41px -41.8px 33.4px rgba(58, 35, 5, 0.086),
+  100px 100px 80px rgba(58, 35, 5, 0.12); 
+}
+
+/* We style the display grid to give it a background image and ensure that the image covers the */
+div#displayGrid {
+  background-color: rgb(117, 86, 5);
+  background-image: url(./assets/the-collector-bg.jpg);
+  width: 100vw;
+  text-align: center;
+  padding: 0;
+  overflow-x: auto;
+}
+
+/* Here we use pseudo selectors from webkit to style the scrollbar for each product tile.*/
+div#displayGrid::-webkit-scrollbar {
+  width: 1em;
+  height: 1em;
+}
+
+/* This styles the track. */
+div#displayGrid::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(78, 42, 0, 0.61);
+}
+
+/* This styles the scrollbar-thumb. */
+div#displayGrid::-webkit-scrollbar-thumb {
+  background-color: rgba(122, 101, 32, 0.678);
+  outline: 1px solid rgba(165, 156, 29, 0.829);
+  border-radius: 7px;
+  box-shadow: inset 1px 1px 3px #fff;
+}
+
+/* Styling the thead to place the heading at the start of the */
+thead {
+  text-align: start !important;
+  position: sticky !important; 
+  top: 2em;
+}
+
+/* We style the th element seperately to position the table heading more precisely. */
+thead th { 
+  text-align: start !important;
+  position: sticky !important; 
+  top: 2em; 
+  padding-left: 2em !important;
+  max-width: 4em !important;
+  z-index: 2;   
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+  /* This styling applies sepcifically to the text of the heading. */
+thead th h1 {
+  font-size: 3em;
+  text-decoration: overline underline !important;
+  letter-spacing: 1.6vw;
+  color: white;
+  text-shadow:
+      0.1px 0.1px 1px rgb(226, 0, 136),
+      -0.1px -0.1px 1px rgb(233, 0, 140),
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #f09,
+      0 0 82px #f09,
+      0 0 92px #f09,
+      0 0 102px #f09,
+      0 0 151px #f09; 
+}
+
+/* The thumbnail image is styled here and some of the bootstrap styling is overridden. */
+.thumbnail {
+  width: 16vw;
+  margin: 0 !important;
+  border-radius: 7px;
+  border: 0.5em, rgba(0, 0, 0, 0.267);
+}
+
+
+/* We need to override the bootstrap styles for the button. */
+.btnImg {
+  border: none !important;
+  color: transparent !important;
+  background: transparent !important;
+  padding: 0.2em !important;
+  margin: 1em !important;
+  box-shadow: inset 0 0 4vmin 3vmin rgba(75, 48, 7, 0.575);  
+}
+
+/* Here the thumbnail buttons are given a hover effect to allow the user to know when they are focussed on. */
+.btnImg:hover{
+  cursor: pointer;
+  box-shadow: 2px 2.8px 2.2px rgba(0, 0, 0, 0.234),
+  -2px -2.8px 2.2px rgba(0, 0, 0, 0.234),
+  4px 4.8px 4.2px rgba(0, 0, 0, 0.134),
+  -4px -4.8px 4.2px rgba(0, 0, 0, 0.134),
+  6px 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  12px 12.5px 10px rgba(0, 0, 0, 0.06),
+  -12px -12.5px 10px rgba(0, 0, 0, 0.06),
+  22px 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  41px 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  -41px -41.8px 33.4px rgba(0, 0, 0, 0.086),
+  100px 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+/* Table date elements are styled to space them out evenly and center the contents. */
+td#productTile {
+  padding: 3rem 4rem 4rem 1rem;
+  margin: 0 !important;
+  text-align: center;
+}
+
+/* We want the h3 elements to look the same while still standing out on 
+their various backgrounds. Here we add unique coloring to the productTile h3. */
+#productTile  h3 {
+  margin-bottom: 2em;
+  height: 1em;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  text-shadow:
+      0.1px 0.1px 2px rgb(255, 191, 30),
+      -0.1px -0.1px 2px rgb(255, 191, 30),
+      0 0 4px #fff,
+      0 0 7px rgba(255, 255, 255, 0.753),
+      0 0 11px rgba(255, 255, 255, 0.582);
+}
+
+/* The p element is styled seperatedly to give it the overflow of scroll and a set max-height */
+#productTile p {
+  font-size: 1rem;
+  width: 18vw;
+  max-height: 40vh;
+  padding: 1.5em;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+/* Here we use pseudo selectors from webkit to style the scrollbar for each product tile.*/
+#productTile p::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+/* This styles the track. */
+#productTile p::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* This styles the scrollbar-thumb. */
+#productTile p::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 192, 192, 0.527);;
+  outline: 1px solid rgba(46, 114, 108, 0.918);
+  border-radius: 5px;
+  box-shadow: inset 1.5px 1px 4px #fff;
+}
+
+.footer {
+  color: white;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.753),
+               2.5px 2.8px 2.9px rgba(0, 0, 0, 0.438);
+  border: 2px inset rgb(216, 216, 216);
+  border-radius: 7pt;
+  margin: 2em 5em;
+  padding: 1em 1em;
+  background: darkslategray;
+  box-shadow: inset 1px 1px 3px gray;
 }
